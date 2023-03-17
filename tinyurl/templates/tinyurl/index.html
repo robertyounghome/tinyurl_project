@@ -1,0 +1,18 @@
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5">TinyURL</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Shorten</button>
+    </form>
+    <hr>
+    {% for url in urls %}
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="m-0">{{ url.description }} </p>
+            <p class="m-0">{{ url.long_url }}</p>
+            <p class="m-0"><a href="{{ url.short_url }}" target="_blank">{{ url.short_url }}</a></p>
+        </div>
+    {% endfor %}   
+</div>
+
